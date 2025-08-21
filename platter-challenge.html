@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Platter – Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .scroll-x {
+        scrollbar-color: #231f20 #ddd6d7;
+        border-radius: 6px;
+      }
+      .scroll-x::-webkit-scrollbar {
+        height: 4px;
+        display: flex;
+        color: #ddd6d7;
+      }
+
+      .scroll-x::-webkit-scrollbar-thumb {
+        height: 4px;
+        transition: height 0.2s ease;
+      }
+      .scroll-x:hover::-webkit-scrollbar {
+        height: 6px;
+      }
+      .scroll-x:hover::-webkit-scrollbar-thumb {
+        background: #737373;
+      }
+      .title-collection {
+        font-family: "Source Serif Pro", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="h-full text-neutral-900">
+    <section
+      class="px-[24px] py-[36px] gap-[12px] md:pl-[128px] md:pr-0 md:py-[80px] md:gap-[36px]"
+    >
+      <header
+        class="mb-4 flex items-center justify-center md:justify-between md:mb-9 md:pr-[128px] pr-[24px]"
+      >
+        <h2
+          class="title-collection font-black text-[40px] leading-[120%] tracking-[-0.01em]"
+        >
+          Best Sellers
+        </h2>
+        <a
+          href="#"
+          class="hidden text-sm font-medium md:inline-flex items-center gap-2 hover:underline"
+        >
+          Shop All Best Sellers <span aria-hidden>→</span>
+        </a>
+      </header>
+
+      <div
+        id="product-scroll"
+        class="scroll-x flex gap-4 overflow-x-auto pb-12"
+      ></div>
+    </section>
+
+    <script>
+      //Array of products
+      const products = [
+        {
+          title: "Outside Vibes T-Shirt Sunshine",
+          price: 104.95,
+          reviews: "1,289 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1518445076071-1f1e5f9e6c9d?q=80&w=600",
+          img2: "https://images.unsplash.com/photo-1518441902111-a9bf3c1cb1fb?q=80&w=600",
+        },
+      ];
+
+      const scroll = document.getElementById("product-scroll");
+
+      products.forEach((p) => {
+        const card = document.createElement("article");
+        card.className = "min-w-[355px] flex-shrink-0";
+
+        card.innerHTML = `
+          <a href="#" class="block">
+            <div class="relative aspect-square w-full overflow-hidden rounded-xl">
+              <img src="${p.img1}" alt="${p.title}"
+                   class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0"/>
+              <img src="${p.img2}" alt="${p.title} secondary"
+                   class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"/>
+              <span class="absolute left-2 top-2 rounded-full bg-white px-2 py-1 text-[8px] md:text-[10px] font-semibold uppercase tracking-wider text-black uppercase">${p.badge}</span>
+            </div>
+            <div class="mt-3 space-y-2">
+              <h3 class="line-clamp-2 text-sm font-medium">${p.title}</h3>
+              <div class="flex items-center gap-2 text-xs text-neutral-500">
+                <span class="text-[#231F20]">${p.rating}</span><span>${p.reviews}</span>
+              </div>
+              <p class="text-sm font-semibold">$${p.price}</p>
+            </div>
+          </a>
+        `;
+        scroll.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
