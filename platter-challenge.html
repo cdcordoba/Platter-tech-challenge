@@ -7,6 +7,10 @@
       href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <title>Platter – Challenge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -33,6 +37,9 @@
       .title-collection {
         font-family: "Source Serif Pro", sans-serif;
       }
+      .font-bebas-neue {
+        font-family: "Bebas Neue", sans-serif;
+      }
     </style>
   </head>
   <body class="h-full text-neutral-900">
@@ -40,10 +47,10 @@
       class="px-[24px] py-[36px] gap-[12px] md:pl-[128px] md:pr-0 md:py-[80px] md:gap-[36px]"
     >
       <header
-        class="mb-4 flex items-center justify-center md:justify-between md:mb-9 md:pr-[128px] pr-[0px]"
+        class="mb-6 flex items-center justify-center md:justify-between md:mb-9 md:pr-[128px] pr-[0px]"
       >
         <h2
-          class="title-collection font-black text-[40px] leading-[120%] tracking-[-0.01em]"
+          class="title-collection font-bold text-[28px] md:text-[40px] leading-[120%] tracking-[-0.01em]"
         >
           Best Sellers
         </h2>
@@ -84,13 +91,14 @@
           img2: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
         {
-          title: "Nike Bottle Outside Vibes Forest Green",
+          title: "Hike Bottle Outside Vibes Forest Green",
           price: 104.95,
           reviews: "926 reviews",
           rating: "★★★★☆",
           badge: "Best Seller",
           img1: "https://images.unsplash.com/photo-1695634237714-81815523807b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           img2: "https://images.unsplash.com/photo-1695634238039-1e79e4d71576?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          discount: "SAVE 15%",
         },
         {
           title: "Rest in Nature T-Shirt",
@@ -109,6 +117,7 @@
           badge: "Best Seller",
           img1: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1036&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           img2: "https://images.unsplash.com/photo-1746851258778-481dd8252ac2?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          discount: "SAVE 15%",
         },
         {
           title: "Runners Sneakers Adidas",
@@ -118,6 +127,7 @@
           badge: "Best Seller",
           img1: "https://images.unsplash.com/photo-1620790458588-c6c4a0d68a84?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           img2: "https://plus.unsplash.com/premium_photo-1723867335796-ae36371e68dc?q=80&w=2014&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          discount: "SAVE 15%",
         },
         {
           title: "Headphones Natural Vibes",
@@ -145,6 +155,7 @@
           badge: "Best Seller",
           img1: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           img2: "https://images.unsplash.com/photo-1548801133-da353ebb1d97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          discount: "SAVE 15%",
         },
         {
           title: "Elegant Handmade Scarf",
@@ -185,14 +196,25 @@
              class="w-full h-full absolute inset-0 object-cover transition-opacity duration-300 group-hover:opacity-0"/>
         <img src="${p.img2}" alt="${p.title} secondary"
              class="w-full h-full absolute inset-0 object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"/>
-        <span class="absolute left-2 top-2 rounded-full bg-white px-2 py-1 text-[8px] md:text-[10px] font-semibold tracking-wider text-black uppercase">${p.badge}</span>
+        <span class="absolute left-2 top-2 rounded-full bg-white px-2 py-1 text-[8px] md:text-[10px] font-semibold tracking-wider text-black uppercase border border-black tracking-[4%] md:tracking-[6%] leading-[1] font-bebas-neue">${
+          p.badge
+        }</span>
+${
+  p.discount
+    ? `<span class="absolute right-2 top-2 rounded-full bg-[#5C7962] px-2 py-1 text-[8px] md:text-[10px] font-semibold tracking-wider text-white uppercase border border-black tracking-[4%] md:tracking-[6%] leading-[1] font-bebas-neue">${p.discount}</span>`
+    : ""
+}
       </div>
       <div class="mt-3 space-y-2">
-        <h3 class="line-clamp-2 text-sm font-medium">${p.title}</h3>
+        <h3 class="line-clamp-2 text-sm font-medium font-bebas-neue uppercase text-[16px] md:text-[14px] tracking-[0.06em]">${
+          p.title
+        }</h3>
         <div class="flex items-center gap-2 text-xs text-neutral-500">
-          <span class="text-[#231F20]">${p.rating}</span><span>${p.reviews}</span>
+          <span class="text-[#231F20] font-poppins">${
+            p.rating
+          }</span><span class="text-[#707070] font-poppins">${p.reviews}</span>
         </div>
-        <p class="text-sm font-semibold">$${p.price}</p>
+        <p class="text-sm font-semibold font-poppins">$${p.price}</p>
       </div>
     </a>
   `;
