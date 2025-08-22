@@ -1,0 +1,140 @@
+{% schema %}
+{
+  "name": "Collection List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text - Show more ",
+      "default": "Show More"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="px-[24px] py-[36px] gap-[12px] md:pl-[128px] md:pr-0 md:py-[80px] md:gap-[36px]">
+  <header class="mb-6 flex items-center justify-center md:justify-between md:mb-9 md:pr-[128px] pr-[0px]">
+    <h2 class="title-collection font-bold text-[28px] md:text-[40px] leading-[120%] tracking-[-0.01em]">
+      {% if section.settings.collection %}
+        {{ section.settings.collection.title }}
+      {% else %}
+        Products
+      {% endif %}
+    </h2>
+    {% if section.settings.collection %}
+      <a
+        href="{{ section.settings.collection.url }}"
+        class="hidden text-sm font-medium md:inline-flex items-center gap-2 hover:underline"
+      >
+        Shop All {{ section.settings.title }}
+        <span aria-hidden>→</span>
+      </a>
+    {% endif %}
+  </header>
+
+  <div
+    id="product-grid"
+    class="grid grid-cols-2 md:flex gap-x-3 gap-y-0 md:gap-4 md:overflow-x-auto md:pb-12 scroll-x md:pr-[128px]"
+  >
+    {% assign products = section.settings.collection.products %}
+    {% for product in products limit: 10 %}
+      <article class="md:min-w-[355px] flex-shrink-0 min-w-[0px] transition-all duration-500 ease-in-out {% if forloop.index > 4 %}max-h-0 opacity-0 overflow-hidden md:opacity-100 md:max-h-none md:block mb-0{% else %}mb-3 md:mb-0{% endif %}">
+        <a href="{{ product.url }}" class="block">
+          <div class="relative aspect-[1/1] w-full overflow-hidden rounded-xl group">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | img_url: '600x600' }}"
+                alt="{{ product.title }}"
+                class="w-full h-full absolute inset-0 object-cover transition-opacity duration-300 group-hover:opacity-0"
+              >
+            {% endif %}
+            {% if product.images.size > 1 %}
+              <img
+                src="{{ product.images[1] | img_url: '600x600' }}"
+                alt="{{ product.title }} secondary"
+                class="w-full h-full absolute inset-0 object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              >
+            {% endif %}
+            {% if product.tags contains 'bestseller' %}
+              <span class="absolute left-2 top-2 rounded-full bg-white px-2 py-1 text-[8px] md:text-[10px] font-semibold tracking-wider text-black uppercase border border-black tracking-[4%] md:tracking-[6%] leading-[1] font-bebas-neue">
+                Best Seller
+              </span>
+            {% endif %}
+          </div>
+          <div class="mt-3 space-y-2">
+            <h3 class="line-clamp-2 text-sm font-medium font-bebas-neue uppercase text-[16px] md:text-[14px] tracking-[0.06em]">
+              {{ product.title }}
+            </h3>
+            <p class="text-sm font-semibold font-poppins">{{ product.price | money }}</p>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+
+  <div class="flex justify-center mt-6 md:hidden">
+    <button id="toggle-more" class="px-4 py-2 text-sm font-medium text-white bg-black rounded-lg">
+      {{ section.settings.button_text }}
+    </button>
+  </div>
+</section>
+
+<style>
+  .scroll-x {
+    scrollbar-color: #231f20 #ddd6d7;
+    border-radius: 6px;
+  }
+  .scroll-x::-webkit-scrollbar {
+    height: 4px;
+    display: flex;
+    color: #ddd6d7;
+  }
+
+  .scroll-x::-webkit-scrollbar-thumb {
+    height: 4px;
+    transition: height 0.2s ease;
+  }
+  .scroll-x:hover::-webkit-scrollbar {
+    height: 6px;
+  }
+  .scroll-x:hover::-webkit-scrollbar-thumb {
+    background: #737373;
+  }
+  .title-collection {
+    font-family: 'Source Serif Pro', sans-serif;
+  }
+  .font-bebas-neue {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const grid = document.getElementById('product-grid');
+    const btn = document.getElementById('toggle-more');
+
+    if (btn) {
+      btn.addEventListener('click', () => {
+        btn.textContent = btn.textContent == 'Show Less' ? '{{ section.settings.button_text }}' : 'Show Less';
+        const hiddenCards = grid.querySelectorAll('article:nth-child(n+5)');
+        hiddenCards.forEach((c) => {
+          c.classList.toggle('max-h-0');
+          c.classList.toggle('opacity-0');
+          c.classList.toggle('max-h-[1000px]');
+          c.classList.toggle('opacity-100');
+        });
+      });
+    }
+  });
+</script>
