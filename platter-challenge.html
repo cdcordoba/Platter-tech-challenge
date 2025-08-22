@@ -40,7 +40,7 @@
       class="px-[24px] py-[36px] gap-[12px] md:pl-[128px] md:pr-0 md:py-[80px] md:gap-[36px]"
     >
       <header
-        class="mb-4 flex items-center justify-center md:justify-between md:mb-9 md:pr-[128px] pr-[24px]"
+        class="mb-4 flex items-center justify-center md:justify-between md:mb-9 md:pr-[128px] pr-[0px]"
       >
         <h2
           class="title-collection font-black text-[40px] leading-[120%] tracking-[-0.01em]"
@@ -56,9 +56,19 @@
       </header>
 
       <div
-        id="product-scroll"
-        class="scroll-x flex gap-4 overflow-x-auto pb-12"
+        id="product-grid"
+        class="grid grid-cols-2 md:flex gap-x-3 gap-y-0 md:gap-4 md:overflow-x-auto md:pb-12 scroll-x md:pr-[128px]"
       ></div>
+
+      <!-- Botón solo en mobile -->
+      <div class="flex justify-center mt-6 md:hidden">
+        <button
+          id="toggle-more"
+          class="px-4 py-2 text-sm font-medium text-white bg-black rounded-lg"
+        >
+          Show More
+        </button>
+      </div>
     </section>
 
     <script>
@@ -70,36 +80,138 @@
           reviews: "1,289 reviews",
           rating: "★★★★☆",
           badge: "Best Seller",
-          img1: "https://images.unsplash.com/photo-1518445076071-1f1e5f9e6c9d?q=80&w=600",
-          img2: "https://images.unsplash.com/photo-1518441902111-a9bf3c1cb1fb?q=80&w=600",
+          img1: "https://plus.unsplash.com/premium_photo-1718913931807-4da5b5dd27fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Nike Bottle Outside Vibes Forest Green",
+          price: 104.95,
+          reviews: "926 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1695634237714-81815523807b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1695634238039-1e79e4d71576?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Rest in Nature T-Shirt",
+          price: 104.95,
+          reviews: "2,384 reviews",
+          rating: "★★★★★",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1621951753163-ee63e7fc147e?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1621951753015-740c699ab970?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Outside Vibes Cap",
+          price: 104.95,
+          reviews: "638 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1036&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1746851258778-481dd8252ac2?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Runners Sneakers Adidas",
+          price: 104.95,
+          reviews: "412 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1620790458588-c6c4a0d68a84?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://plus.unsplash.com/premium_photo-1723867335796-ae36371e68dc?q=80&w=2014&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Headphones Natural Vibes",
+          price: 104.95,
+          reviews: "1,040 reviews",
+          rating: "★★★★★",
+          badge: "Best Seller",
+          img1: "https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?q=80&w=2013&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://plus.unsplash.com/premium_photo-1677838847804-4054143fb91a?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Gold Bracelet",
+          price: 104.95,
+          reviews: "284 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://plus.unsplash.com/premium_photo-1709033404514-c3953af680b4?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1744472457504-f99a96ecbd3e?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Nike Runner – Red",
+          price: 104.95,
+          reviews: "990 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1548801133-da353ebb1d97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Elegant Handmade Scarf",
+          price: 104.95,
+          reviews: "713 reviews",
+          rating: "★★★★☆",
+          badge: "Best Seller",
+          img1: "https://plus.unsplash.com/premium_photo-1695603438043-1b9ab6ebe1a8?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://plus.unsplash.com/premium_photo-1695604461122-d26e0abae78d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        },
+        {
+          title: "Studio Headphones – Black",
+          price: 104.95,
+          reviews: "1,522 reviews",
+          rating: "★★★★★",
+          badge: "Best Seller",
+          img1: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          img2: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         },
       ];
 
-      const scroll = document.getElementById("product-scroll");
+      const grid = document.getElementById("product-grid");
 
-      products.forEach((p) => {
+      products.forEach((p, index) => {
         const card = document.createElement("article");
-        card.className = "min-w-[355px] flex-shrink-0";
+
+        // 👇 oculta los productos después del 4to en mobile
+        card.className =
+          "md:min-w-[355px] flex-shrink-0 min-w-[0px] transition-all duration-500 ease-in-out " +
+          (index >= 4
+            ? "max-h-0 opacity-0 overflow-hidden md:opacity-100 md:max-h-none md:block mb-0"
+            : "mb-3 md:mb-0");
 
         card.innerHTML = `
-          <a href="#" class="block">
-            <div class="relative aspect-square w-full overflow-hidden rounded-xl">
-              <img src="${p.img1}" alt="${p.title}"
-                   class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0"/>
-              <img src="${p.img2}" alt="${p.title} secondary"
-                   class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"/>
-              <span class="absolute left-2 top-2 rounded-full bg-white px-2 py-1 text-[8px] md:text-[10px] font-semibold uppercase tracking-wider text-black uppercase">${p.badge}</span>
-            </div>
-            <div class="mt-3 space-y-2">
-              <h3 class="line-clamp-2 text-sm font-medium">${p.title}</h3>
-              <div class="flex items-center gap-2 text-xs text-neutral-500">
-                <span class="text-[#231F20]">${p.rating}</span><span>${p.reviews}</span>
-              </div>
-              <p class="text-sm font-semibold">$${p.price}</p>
-            </div>
-          </a>
-        `;
-        scroll.appendChild(card);
+    <a href="#" class="block">
+      <div class="relative aspect-[1/1] md:aspect-square w-full overflow-hidden rounded-xl group">
+        <img src="${p.img1}" alt="${p.title}"
+             class="w-full h-full absolute inset-0 object-cover transition-opacity duration-300 group-hover:opacity-0"/>
+        <img src="${p.img2}" alt="${p.title} secondary"
+             class="w-full h-full absolute inset-0 object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"/>
+        <span class="absolute left-2 top-2 rounded-full bg-white px-2 py-1 text-[8px] md:text-[10px] font-semibold tracking-wider text-black uppercase">${p.badge}</span>
+      </div>
+      <div class="mt-3 space-y-2">
+        <h3 class="line-clamp-2 text-sm font-medium">${p.title}</h3>
+        <div class="flex items-center gap-2 text-xs text-neutral-500">
+          <span class="text-[#231F20]">${p.rating}</span><span>${p.reviews}</span>
+        </div>
+        <p class="text-sm font-semibold">$${p.price}</p>
+      </div>
+    </a>
+  `;
+        grid.appendChild(card);
+      });
+
+      // Toggle en mobile
+      const btn = document.getElementById("toggle-more");
+      btn.addEventListener("click", () => {
+        btn.textContent =
+          btn.textContent == "Show Less" ? "Show More" : "Show Less";
+        const hiddenCards = grid.querySelectorAll("article:nth-child(n+5)");
+
+        hiddenCards.forEach((c) => {
+          c.classList.toggle("max-h-0");
+          c.classList.toggle("opacity-0");
+          c.classList.toggle("max-h-[1000px]");
+          c.classList.toggle("opacity-100");
+        });
       });
     </script>
   </body>
